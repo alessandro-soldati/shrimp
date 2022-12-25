@@ -1,30 +1,12 @@
 import sys
-import re
+import shrimp
 
-# Class definition
-class RPNcalc:
-    def __init__(self):
-        self.stack = []
-        
-    def load(self, data):
-        toks = re.split(r'(-?\d+(?:\.\d+)?[eE]?\d*)', data)
-        for tok in toks:
-            if tok is not None and tok != '':
-                #if str.isnumeric():
-                #    tok = (tok)
-                self.stack.append(tok)
-        
-    def get(self):
-        return self.stack.pop()
-        
-    def all(self):
-        return self.stack
+if __name__ == "__main__":
     
-# Main program
-print("SHRIMP - RPN calculator")
-
-asd = RPNcalc()
-for arg in sys.argv[1:]:
-    asd.load(arg)
-
-print(asd.all())
+    print("SHRIMP - RPN calculator")
+    
+    calc = shrimp.RPNcalc()
+    for arg in sys.argv[1:]:
+        calc.load(arg)
+    
+    print(calc.all())
