@@ -34,8 +34,11 @@ class RPNcalc(list):
         'dup': (1, lambda x: (x, x)),
         # power
         'pow': (2, lambda x, y: y**x),
-        'sqrt': (1, math.sqrt),
         'root': (2, lambda x, y: y**(1/x)), # Python 3 only!
+        'sq': (1, lambda x: x**2),
+        'sqrt': (1, math.sqrt),
+        'cb': (1, lambda x: x**3),
+        'cbrt': (1, math.cbrt),
         # trigonometric functions
         'sin': (1, math.sin),
         'cos': (1, math.cos),
@@ -82,3 +85,6 @@ class RPNcalc(list):
             else:
                 print('Error!')
      
+    def get_stack(self, nview):
+        nview = min(nview, len(self))
+        return(list(self)[-nview:])
